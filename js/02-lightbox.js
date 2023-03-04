@@ -17,26 +17,7 @@ const sipleGalleryMarkup = galleryItems
 
 sipleGalleryListRef.insertAdjacentHTML("beforeend", sipleGalleryMarkup);
 
-sipleGalleryListRef.addEventListener("click", handlerGalleryItemClick);
-
-function handlerGalleryItemClick(e) {
-  e.preventDefault();
-  if (e.target.nodeName !== "IMG") {
-    return;
-  }
-
-  const lightbox = new SimpleLightbox(".gallery a", {
-    fadeSpeed: 400,
-    captionsData: "alt",
-    captionDelay: 250,
-  });
-  lightbox.open();
-
-  console.log(e);
-
-  function handlerInstanceClose(e) {
-    e.preventDefault();
-  }
-
-  window.addEventListener("keydown", handlerInstanceClose);
-}
+const lightbox = new SimpleLightbox(`.gallery__item`, {
+  captionsData: "alt",
+  captionDelay: 250,
+});
